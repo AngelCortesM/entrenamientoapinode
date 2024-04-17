@@ -31,6 +31,14 @@
                     <td><%= a.nombre %></td>
                     <td><%= a.genero %></td>
                     <td><%= a.foto %></td>
+                    <td>
+                        <a href="/aprendiz/editar/<%= a.id %>"> <button
+                                class="btn btn-outline-primary">Editar</button></a>
+                    </td>
+                    <td>
+                        <a href="/aprendiz/borrar/<%= a.id %>"> <button
+                                class="btn btn-outline-danger">Borrar</button></a>
+                    </td>
                 </tr>
                 <% }) %>
             </tbody>

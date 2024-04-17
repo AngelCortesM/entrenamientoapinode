@@ -33,9 +33,34 @@ router.get('/Api', (req, res) => {
     });
 });
 
+router.get('/aprendiz/editar/:id',(req,res) =>{
+    const id= req.params.id;
+conex.query('Select * from aprendiz where id=?',[id],(error, resultado)=>{
+    if(error){
+        throw error;
+    }else{
+        res.render('editar',{aprendiz:resultado[0]})
+    }
+});
+
+});
+
+router.get('/aprendiz/borrar/:id',(req,res) =>{
+    const id= req.params.id;
+conex.query('delete from aprendiz where id=?',[id],(error, resultado)=>{
+    if(error){
+        throw error;
+    }else{
+        res.redirect('/aprendiz/listar')
+    }
+});
+
+});
+
 const Aprendiz = require('./controllers/Aprendiz');
 
 
 router.post('/aprendiz/guardar', Aprendiz.guardar);
+router.post('/aprendiz/actualizar',Aprendiz.actualizar);
 
 module.exports = router;
